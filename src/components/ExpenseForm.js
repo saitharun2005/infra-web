@@ -41,7 +41,7 @@ const ExpenseForm = () => {
     category: '',
     amount: '',
     paymentMethod: '',
-    quantity: '',
+    quantityAccommodation: '',
     description: '',
     notes: '',
     
@@ -56,14 +56,14 @@ const ExpenseForm = () => {
     rentPer: '',
     rentPerType: '',
     totalRent: '',
-    transportCharges: '',
+    transportChargesRental: '',
     maintenanceCharges: '',
     
     // Tool Purchase
     toolName: '',
     quantityPurchased: '',
     pricePerUnit: '',
-    totalAmount: '',
+    totalAmountTool: '',
     brandModel: '',
     vendorSupplier: '',
     vendorContactTool: '',
@@ -90,12 +90,12 @@ const ExpenseForm = () => {
     
     // Machine Purchase (Material Purchase)
     materialName: '',
-    quantity: '',
+    quantityMaterial: '',
     unitOfMeasure: '',
     ratePerUnit: '',
     supplierName: '',
     supplierContact: '',
-    transportCharges: '',
+    transportChargesMaterial: '',
     
     // Repairs
     itemMachineToolName: '',
@@ -106,7 +106,7 @@ const ExpenseForm = () => {
     sparePartsCost: '',
     labourCharges: '',
     transportChargesRepair: '',
-    totalCost: '',
+    totalCostRepair: '',
     warrantyRepair: '',
     warrantyStartDate: '',
     warrantyEndDate: '',
@@ -115,7 +115,7 @@ const ExpenseForm = () => {
     fuelCategory: '',
     fuelQuantity: '',
     costPerUnit: '',
-    totalCost: '',
+    totalCostFuel: '',
     
     // All remaining expenses
     totalAmountRemaining: '',
@@ -225,7 +225,7 @@ const ExpenseForm = () => {
       
       case 'machines-tools-rental':
         const rentalTotal = (parseFloat(formData.totalRent) || 0) + 
-                           (parseFloat(formData.transportCharges) || 0) + 
+                           (parseFloat(formData.transportChargesRental) || 0) + 
                            (parseFloat(formData.maintenanceCharges) || 0);
         return rentalTotal;
       
@@ -239,15 +239,15 @@ const ExpenseForm = () => {
         return parseFloat(formData.totalAmountLabour) || 0;
       
       case 'material-purchase':
-        const materialTotal = (parseFloat(formData.totalAmount) || 0) + 
-                             (parseFloat(formData.transportCharges) || 0);
+        const materialTotal = (parseFloat(formData.totalAmountTool) || 0) + 
+                             (parseFloat(formData.transportChargesMaterial) || 0);
         return materialTotal;
       
       case 'repairs':
-        return parseFloat(formData.totalCost) || 0;
+        return parseFloat(formData.totalCostRepair) || 0;
       
       case 'petrol-diesel':
-        return parseFloat(formData.totalCost) || 0;
+        return parseFloat(formData.totalCostFuel) || 0;
       
       default:
         return parseFloat(formData.totalAmountRemaining) || 0;
@@ -431,8 +431,8 @@ const ExpenseForm = () => {
               <label className="form-label">Quantity *</label>
               <input
                 type="number"
-                name="quantity"
-                value={formData.quantity}
+                name="quantityAccommodation"
+                value={formData.quantityAccommodation}
                 onChange={handleInputChange}
                 className="form-input"
                 placeholder="Enter quantity"
@@ -1166,8 +1166,8 @@ const ExpenseForm = () => {
               <label className="form-label">Quantity *</label>
               <input
                 type="number"
-                name="quantity"
-                value={formData.quantity}
+                name="quantityMaterial"
+                value={formData.quantityMaterial}
                 onChange={handleInputChange}
                 className="form-input"
                 placeholder="Enter quantity"
